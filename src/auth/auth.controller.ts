@@ -1,12 +1,15 @@
 import {
   Body,
   Controller,
+  Get,
   HttpCode,
   HttpStatus,
   NotFoundException,
   Post,
+  UseGuards,
 } from '@nestjs/common';
 import { AuthService } from './auth.service';
+import { AuthGuard } from './auth.guard';
 
 @Controller('auth')
 export class AuthController {
@@ -21,5 +24,11 @@ export class AuthController {
       throw new NotFoundException('Usuario no registrado');
     }
     return user;
+  }
+
+  @UseGuards(AuthGuard)
+  @Get('profile')
+  getProfile(req): string {
+    return 'Accediste a la ruta profile';
   }
 }
