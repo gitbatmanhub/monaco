@@ -16,6 +16,14 @@ export class UsersService {
     return this.userRepository.save(createUserDto);
   }
 
+  createUser(createUserDto: CreateUserDto) {
+    return this.userRepository.save(createUserDto);
+  }
+
+  createUserWithHash(createUserDto: CreateUserDto) {
+    return this.userRepository.save(createUserDto);
+  }
+
   findAll(): Promise<User[]> {
     return this.userRepository.find();
   }

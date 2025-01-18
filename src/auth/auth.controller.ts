@@ -17,13 +17,20 @@ export class AuthController {
 
   @HttpCode(HttpStatus.OK)
   @Post('login')
-  async signIn(@Body() CreateUserDto: Record<string, any>) {
+  async login(@Body() CreateUserDto: Record<string, any>) {
     const { email, password } = CreateUserDto;
-    const user = await this.authService.signIn(email, password);
+    const user = await this.authService.login(email, password);
     if (!user) {
       throw new NotFoundException('Usuario no registrado');
     }
     return user;
+  }
+
+  @HttpCode(HttpStatus.OK)
+  @Post('sigIn')
+  async sigIn(@Body() CreateUserDto: Record<string, any>) {
+    const { email, pass } = CreateUserDto;
+    return await this.authService.sigIn(email, pass);
   }
 
   @UseGuards(AuthGuard)
