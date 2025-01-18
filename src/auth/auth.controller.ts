@@ -6,15 +6,15 @@ import {
   HttpStatus,
   NotFoundException,
   Post,
-  UseGuards,
 } from '@nestjs/common';
 import { AuthService } from './auth.service';
-import { AuthGuard } from './auth.guard';
+import { Public } from './constants';
 
 @Controller('auth')
 export class AuthController {
   constructor(private authService: AuthService) {}
 
+  @Public()
   @HttpCode(HttpStatus.OK)
   @Post('login')
   async login(@Body() CreateUserDto: Record<string, any>) {
@@ -26,6 +26,7 @@ export class AuthController {
     return user;
   }
 
+  @Public()
   @HttpCode(HttpStatus.OK)
   @Post('sigIn')
   async sigIn(@Body() CreateUserDto: Record<string, any>) {
@@ -33,7 +34,6 @@ export class AuthController {
     return await this.authService.sigIn(email, pass);
   }
 
-  @UseGuards(AuthGuard)
   @Get('profile')
   getProfile(req): string {
     return 'Accediste a la ruta profile';

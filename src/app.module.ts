@@ -6,6 +6,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
 import { AuthModule } from './auth/auth.module';
 import * as process from 'node:process';
+import { AuthGuard } from './auth/auth.guard';
 
 @Module({
   imports: [
@@ -28,6 +29,8 @@ import * as process from 'node:process';
     AuthModule,
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, { provide: 'APP_GUARD', useClass: AuthGuard }],
 })
-export class AppModule {}
+export class AppModule {
+  constructor() {}
+}
