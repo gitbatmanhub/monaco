@@ -26,7 +26,7 @@ export class AuthService {
 
     console.log(compare);
 
-    const payload = { sub: user.id, email: user.email };
+    const payload = { sub: user.idUsuario, email: user.email };
 
     return {
       access_toke: await this.createJwtToken(payload),
@@ -54,7 +54,7 @@ export class AuthService {
 
     const UserRegister = await this.userServices.create(newUser);
 
-    const payload = { sub: UserRegister.id, email: UserRegister.email };
+    const payload = { sub: UserRegister.idUsuario, email: UserRegister.email };
 
     return { access_toke: await this.createJwtToken(payload) };
   }
