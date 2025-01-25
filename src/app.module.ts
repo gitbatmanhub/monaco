@@ -22,7 +22,7 @@ import { RoleModule } from './modules/role/role.module';
       schema: process.env.schemaPostgres,
       username: process.env.usernamePostgres,
       password: process.env.passwordPostgres,
-      synchronize: true,
+      synchronize: false,
       database: process.env.databasePostgres,
       entities: ['dist/**/*.entity{.ts,.js}'],
     }),

@@ -1,1 +1,13 @@
-export class CreateRoleDto {}
+import { IsNotEmpty, IsString, MaxLength, MinLength } from 'class-validator';
+
+export class CreateRoleDto {
+  @IsNotEmpty()
+  @IsString()
+  @MinLength(3)
+  name: string;
+
+  @IsNotEmpty()
+  @IsString()
+  @MaxLength(255)
+  description: string;
+}

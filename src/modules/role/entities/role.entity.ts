@@ -12,7 +12,7 @@ export class RoleEntity {
   @Column()
   description: string;
 
-  @Column()
+  @Column({ default: true })
   status: boolean;
 
   @Column({ default: new Date() })

@@ -12,7 +12,7 @@ export class RoleService {
     private roleRepository: Repository<RoleEntity>,
   ) {}
 
-  create(createRoleDto: CreateRoleDto) {
+  create(createRoleDto: CreateRoleDto): Promise<RoleEntity> {
     return this.roleRepository.save(createRoleDto);
   }
 
