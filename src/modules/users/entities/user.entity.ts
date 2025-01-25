@@ -23,7 +23,7 @@ export class UserEntity {
   @IsBoolean()
   deleted: boolean;
 
-  @Column({ nullable: true, default: new Date() })
+  @Column()
   password: string;
 
   @Column({ nullable: true, default: new Date() })

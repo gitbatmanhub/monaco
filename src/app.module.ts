@@ -7,6 +7,7 @@ import { ConfigModule } from '@nestjs/config';
 import { AuthModule } from './modules/auth/auth.module';
 import * as process from 'node:process';
 import { AuthGuard } from './modules/auth/auth.guard';
+import { RoleModule } from './modules/role/role.module';
 
 @Module({
   imports: [
@@ -27,6 +28,7 @@ import { AuthGuard } from './modules/auth/auth.guard';
     }),
     UsersModule,
     AuthModule,
+    RoleModule,
   ],
   controllers: [AppController],
   providers: [AppService, { provide: 'APP_GUARD', useClass: AuthGuard }],

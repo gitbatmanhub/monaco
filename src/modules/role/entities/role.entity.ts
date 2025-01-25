@@ -1,9 +1,9 @@
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
-@Entity()
-export class Role {
+@Entity('role')
+export class RoleEntity {
   @PrimaryGeneratedColumn()
-  @OneToMany(() => Role, (role) => role.idRol)
+  //@OneToMany(() => RoleEntity, (role) => role.idRol)
   idRol: number;
 
   @Column()
@@ -15,9 +15,9 @@ export class Role {
   @Column()
   status: boolean;
 
-  @Column()
+  @Column({ default: new Date() })
   created_at: Date = new Date();
 
-  @Column()
+  @Column({ default: new Date() })
   updated_at: Date = new Date();
 }
