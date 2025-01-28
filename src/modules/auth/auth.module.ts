@@ -5,10 +5,12 @@ import { UsersModule } from '../users/users.module';
 import { JwtModule } from '@nestjs/jwt';
 import { jwtConstant } from './constants';
 import { JwtStrategy } from './jwt.strategy';
+import { RoleModule } from '../role/role.module';
 
 @Module({
   imports: [
     UsersModule,
+    RoleModule,
     JwtModule.register({
       global: true,
       secret: jwtConstant.secret,

@@ -30,8 +30,8 @@ export class AuthController {
   @HttpCode(HttpStatus.OK)
   @Post('sigIn')
   async sigIn(@Body() CreateUserDto: Record<string, any>) {
-    const { email, pass } = CreateUserDto;
-    return await this.authService.sigIn(email, pass);
+    const { email, password } = CreateUserDto;
+    return await this.authService.sigIn(email, password);
   }
 
   @Get('profile')

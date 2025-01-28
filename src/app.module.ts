@@ -8,6 +8,7 @@ import { AuthModule } from './modules/auth/auth.module';
 import * as process from 'node:process';
 import { AuthGuard } from './modules/auth/auth.guard';
 import { RoleModule } from './modules/role/role.module';
+import { PlansModule } from './modules/plans/plans.module';
 
 @Module({
   imports: [
@@ -22,13 +23,14 @@ import { RoleModule } from './modules/role/role.module';
       schema: process.env.schemaPostgres,
       username: process.env.usernamePostgres,
       password: process.env.passwordPostgres,
-      synchronize: false,
+      synchronize: true,
       database: process.env.databasePostgres,
       entities: ['dist/**/*.entity{.ts,.js}'],
     }),
     UsersModule,
     AuthModule,
     RoleModule,
+    PlansModule,
   ],
   controllers: [AppController],
   providers: [AppService, { provide: 'APP_GUARD', useClass: AuthGuard }],

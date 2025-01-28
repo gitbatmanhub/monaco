@@ -14,4 +14,7 @@ export class UsuarioRoleEntity {
   @Column()
   @ManyToOne(() => UserEntity, (user) => user.idUsuario)
   idUsuario: number;
+
+  @Column({ nullable: true, default: true })
+  status: boolean;
 }

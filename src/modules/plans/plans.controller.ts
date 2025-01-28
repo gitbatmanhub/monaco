@@ -1,7 +1,16 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Patch,
+  Post,
+} from '@nestjs/common';
 import { PlansService } from './plans.service';
 import { CreatePlanDto } from './dto/create-plan.dto';
 import { UpdatePlanDto } from './dto/update-plan.dto';
+import { Public } from '../auth/constants';
 
 @Controller('plans')
 export class PlansController {
@@ -12,6 +21,7 @@ export class PlansController {
     return this.plansService.create(createPlanDto);
   }
 
+  @Public()
   @Get()
   findAll() {
     return this.plansService.findAll();

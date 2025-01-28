@@ -10,37 +10,39 @@ import {
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
+import { Public } from '../auth/constants';
 
 @Controller('users')
 export class UsersController {
-  constructor(private readonly _usersService: UsersService) {}
+  constructor(private readonly userService: UsersService) {}
 
   get usersService(): UsersService {
-    return this._usersService;
+    return this.userService;
   }
 
+  @Public()
   @Post()
   create(@Body() createUserDto: CreateUserDto) {
-    return this._usersService.create(createUserDto);
+    return this.userService.create(createUserDto);
   }
 
   @Get()
   findAll() {
-    return this._usersService.findAll();
+    return this.userService.findAll();
   }
 
   @Get(':email')
   findOne(@Param('email') email: string) {
-    return this._usersService.findOneByEmail(email);
+    return this.userService.findOneByEmail(email);
   }
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
-    return this._usersService.update(+id, updateUserDto);
+    return this.userService.update(+id, updateUserDto);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this._usersService.remove(+id);
+    return this.userService.remove(+id);
   }
 }

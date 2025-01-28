@@ -11,17 +11,16 @@ export class UserEntity {
   @IsEmail()
   email: string;
 
-  @Column()
-  @IsBoolean()
-  status: boolean;
+  @Column({ nullable: true, default: true })
+  status: boolean = true;
 
-  @Column()
+  @Column({ nullable: true, default: new Date() })
   @IsDate()
   ultimoIngreso: Date = new Date();
 
-  @Column()
+  @Column({ nullable: true, default: false })
   @IsBoolean()
-  deleted: boolean;
+  deleted: boolean = false;
 
   @Column()
   password: string;
